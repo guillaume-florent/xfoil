@@ -6,18 +6,18 @@
      &                ALFI_R, ALFI_W, ALFI_H,
      &                ALFIW_R,ALFIW_W,ALFIW_H , OK)
 C---------------------------------------------------------------------
-C    
-C     Returns real and imaginary parts of complex wavenumber (Alpha) 
-C     eigenvalue from Orr-Sommerfeld spatial-stability solution 
-C     with mean profiles characterized by shape parameter H.  
-C     Also returns the sensitivities of Alpha with respect to the 
+C
+C     Returns real and imaginary parts of complex wavenumber (Alpha)
+C     eigenvalue from Orr-Sommerfeld spatial-stability solution
+C     with mean profiles characterized by shape parameter H.
+C     Also returns the sensitivities of Alpha with respect to the
 C     input parameters.
 C
-C     The eigenvalue Alpha(Rtheta,W,H) is stored as a 3-D array at 
+C     The eigenvalue Alpha(Rtheta,W,H) is stored as a 3-D array at
 C     discrete points, which is then interpolated to any (Rtheta,W,H)
 C     via a tricubic spline.  The spline coordinates actually used are:
 C
-C       RL = log10(Rtheta)    
+C       RL = log10(Rtheta)
 C       WL = log10(W) + 0.5 log10(Rtheta)
 C       HL = H
 C
@@ -47,12 +47,12 @@ C        ALFIW_W  d(dALFI/dW)/dW
 C        ALFIW_H  d(dALFI/dW)/dH
 C
 C        OK     T  if look up was successful; all values returned are valid
-C               F  if point fell outside (RL,WL) spline domain limits; 
+C               F  if point fell outside (RL,WL) spline domain limits;
 C                  all values (ALFR, ALFR_R, etc.) are returned as zero.
 C                  Exception: If points only falls outside HL spline limits,
 C                  then the HL limit is used and an ALFR value is calculated,
 C                  but OK is still returned as F.
-C                  
+C
 C---------------------------------------------------------------------
       LOGICAL OK
 C
@@ -98,7 +98,8 @@ C
 C
 C---- set OSFILE to match the absolute OS database filename
       CHARACTER*128 OSFILE
-      DATA OSFILE / '/home/codes/orrs/osmapDP.dat' /
+      DATA OSFILE / '/opt/xfoil/orrs/osmapDP.dat' /
+ccc      DATA OSFILE / '/home/codes/orrs/osmapDP.dat' /
 ccc      DATA OSFILE / '/home/codes/orrs/osmap.dat' /
 c
 c      DATA OSFILE
@@ -123,7 +124,7 @@ C
       READ(LU) NR, NW, NH
 C
       IF(NR.GT.NRX .OR.
-     &   NW.GT.NWX .OR. 
+     &   NW.GT.NWX .OR.
      &   NH.GT.NHX     ) THEN
        WRITE(*,*) 'OSMAP: Array limit exceeded.'
        IF(NR.GT.NRX) WRITE(*,*) '       Increase NRX to', NR
@@ -409,7 +410,7 @@ C
       AINTW_WL = ((6.0*TW-4.0)*DC1  + (6.0*TW-2.0)*DC2 )/DWL**2
 C
 C
-C---- convert derivatives wrt to spline coordinates (RL,WL,HL) into 
+C---- convert derivatives wrt to spline coordinates (RL,WL,HL) into
 C-    derivatives wrt input variables (Rtheta,f,H)
       AINT_R(IC) = (AINT_RL + 0.5*AINT_WL) / (AL10 * RSP)
       AINT_W(IC) = (AINT_WL              ) / (AL10 * WSP)

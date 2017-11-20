@@ -1,4 +1,6 @@
-Start from a small footprint Linux Docker image
+Start from a small footprint Linux Docker image -> minideb ?
+
+git clone --depth=1 <remote repo url>
 
 Compile procedure
 -----------------

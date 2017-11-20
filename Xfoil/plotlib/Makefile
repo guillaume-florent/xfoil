@@ -1,8 +1,8 @@
 #***********************************************************************
 #    Module:  Makefile
-# 
-#    Copyright (C) 1996 Harold Youngren, Mark Drela 
-# 
+#
+#    Copyright (C) 1996 Harold Youngren, Mark Drela
+#
 #    This library is free software; you can redistribute it and/or
 #    modify it under the terms of the GNU Library General Public
 #    License as published by the Free Software Foundation; either
@@ -16,9 +16,9 @@
 #    You should have received a copy of the GNU Library General Public
 #    License along with this library; if not, write to the Free
 #    Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-# 
-#    Report problems to:    guppy@maine.com 
-#                        or drela@mit.edu  
+#
+#    Report problems to:    guppy@maine.com
+#                        or drela@mit.edu
 #***********************************************************************
 
 
@@ -34,9 +34,9 @@
 #INSTALLDIR = /usr/local/lib
 INSTALLDIR = .
 
-# Use these to set default library name (overridden in config.make file) 
-PLTLIB = libPlt.a
-#PLTLIB = libPltDP.a
+# Use these to set default library name (overridden in config.make file)
+# PLTLIB = libPlt.a
+PLTLIB = libPltDP.a
 
 
 ###========================================================
@@ -126,7 +126,7 @@ gw_subs.o: gw_subs.f  pltlib.inc
 ps_subs.o: ps_subs.f  pltlib.inc
 	$(FC) -c $(FFLAGS)  ps_subs.f
 
-util-ops.o: util-ops.f 
+util-ops.o: util-ops.f
 	$(FC) -c $(FFLAGS)  util-ops.f
 
 Xwin.o: Xwin.c

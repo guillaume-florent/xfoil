@@ -24,7 +24,7 @@ PXPLOTOBJ = pxplot.o plutil.o gui.o
 
 XUTILOBJ  = userio.o
 
-FTNLIB = 
+FTNLIB =
 
 ##----------------------------------------------------
 OSOBJ = frplot0.o
@@ -33,10 +33,10 @@ OSOBJ = frplot0.o
 OSOBJ = frplot.o ntcalc.o osmap.o getosfile.o
 
 ##----------------------------------------------------
-PLTOBJ = ../plotlib/libPlt.a 
+PLTOBJ = /opt/xfoil/plotlib/libPlt.a
 
 # Use this if you have a copy of the plotlib as a system library
-#PLTOBJ = -lPlt 
+#PLTOBJ = -lPlt
 
 # The extra location arg here is for Linux which places X libs in /usr/X11R6
 PLTLIB = -L/usr/X11R6/lib -lX11
@@ -44,12 +44,12 @@ PLTLIB = -L/usr/X11R6/lib -lX11
 ###================================================
 ###  Default compilers and flags
 ###  FFLOPT used for xsolve.f
-FC = f77
-FFLAGS  = -O 
+FC = gfortran
+FFLAGS  = -O
 FFLOPT  = -O
 INSTALLCMD = install -s
 
-CC = cc
+CC = gcc
 CFLAGS = -O -DUNDERSCORE
 
 ##--------------------------
@@ -85,7 +85,7 @@ CFLAGS = -O -DUNDERSCORE
 #FFLAGS = -O -f -s -W -B108 -N34
 #FFLOPT = -O -f -s -W -B108 -N34
 ##--------------------------
-### f2c/gcc compiler driver 
+### f2c/gcc compiler driver
 #FC = fort77
 #FFLAGS = -O2 -fomit-frame-pointer
 #FFLOPT = -O2 -fomit-frame-pointer
@@ -116,20 +116,20 @@ CFLAGS = -O -DUNDERSCORE
 ##--------------------------
 ### Gfortran
 FC = gfortran
-CHK = 
+CHK =
 CHK = -fbounds-check -finit-real=inf -ffpe-trap=invalid,zero
 DBL = -fdefault-real-8
 FFLAGS = -O $(CHK) $(DBL)
 FFLOPT = -O $(CHK) $(DBL)
 FTNLIB =
 
-PLTOBJ = ../plotlib/libPlt_gDP.a 
+PLTOBJ = /opt/xfoil/plotlib/libPlt_gDP.a
 
 
 
 all:	 $(PROGS)
 
-install: 
+install:
 	$(INSTALLCMD) $(PROGS) $(BINDIR)
 
 clean:
@@ -189,23 +189,23 @@ blplot.o: $(SRC)/blplot.f $(SRC)/XFOIL.INC $(SRC)/BLPAR.INC
 	$(FC) -c $(FFLAGS)  $(SRC)/blplot.f
 xpol.o: $(SRC)/xpol.f     $(SRC)/XFOIL.INC $(SRC)/PINDEX.INC
 	$(FC) -c $(FFLAGS)  $(SRC)/xpol.f
-xgeom.o: $(SRC)/xgeom.f 
+xgeom.o: $(SRC)/xgeom.f
 	$(FC) -c $(FFLAGS)  $(SRC)/xgeom.f
-xutils.o: $(SRC)/xutils.f 
+xutils.o: $(SRC)/xutils.f
 	$(FC) -c $(FFLAGS)  $(SRC)/xutils.f
-modify.o: $(SRC)/modify.f 
+modify.o: $(SRC)/modify.f
 	$(FC) -c $(FFLAGS)  $(SRC)/modify.f
-aread.o: $(SRC)/aread.f 
+aread.o: $(SRC)/aread.f
 	$(FC) -c $(FFLAGS)  $(SRC)/aread.f
-naca.o: $(SRC)/naca.f 
+naca.o: $(SRC)/naca.f
 	$(FC) -c $(FFLAGS)  $(SRC)/naca.f
-plutil.o: $(SRC)/plutil.f 
+plutil.o: $(SRC)/plutil.f
 	$(FC) -c $(FFLAGS)  $(SRC)/plutil.f
-userio.o: $(SRC)/userio.f 
+userio.o: $(SRC)/userio.f
 	$(FC) -c $(FFLAGS)  $(SRC)/userio.f
-gui.o: $(SRC)/gui.f 
+gui.o: $(SRC)/gui.f
 	$(FC) -c $(FFLAGS)  $(SRC)/gui.f
-spline.o: $(SRC)/spline.f 
+spline.o: $(SRC)/spline.f
 	$(FC) -c $(FFLAGS)  $(SRC)/spline.f
 sort.o: $(SRC)/sort.f
 	$(FC) -c $(FFLAGS)  $(SRC)/sort.f
