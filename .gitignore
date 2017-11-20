@@ -1,3 +1,5 @@
+/.idea
+
 # Prerequisites
 *.d
 
@@ -24,9 +26,9 @@
 *.lai
 *.la
 *.a
-*.lib
+# *.lib
 
 # Executables
-*.exe
+# *.exe
 *.out
 *.app
