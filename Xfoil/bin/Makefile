@@ -7,7 +7,8 @@
 
 SHELL = sh
 #BINDIR = /home/codes/bin/
-BINDIR = .
+# BINDIR = .
+BINDIR = /usr/bin/
 
 PROGS = xfoil pplot pxplot
 
