@@ -36,7 +36,7 @@ INSTALLDIR = .
 
 # Use these to set default library name (overridden in config.make file)
 # PLTLIB = libPlt.a
-PLTLIB = libPltDP.a
+PLTLIB = libPlt_gDP.a
 
 
 ###========================================================
@@ -68,7 +68,7 @@ OBJ3D  = plt_3D.o
 
 ###-------------------------------------------------------------------------
 ### Set compiler, compiler flags, name of output object library
-include ./config.make
+include ./config.make.gfortranDP
 
 
 ###-------------------------------------------------------------------------

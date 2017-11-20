@@ -26,10 +26,13 @@ RUN rm -r /opt/xfoil_download
 
 # Compile
 WORKDIR /opt/xfoil/orrs/bin
-RUN make -f Makefile_DP osgen && make osmap.o
+RUN make -f Makefile_DP osgen && make -f Makefile_DP osmap.o
 
-WORKDIR /opt/xfoil
+WORKDIR /opt/xfoil/orrs
 RUN ./bin/osgen osmaps_ns.lst
+
+WORKDIR /opt/xfoil/plotlib
+RUN make
 
 WORKDIR /opt/xfoil/bin
 RUN make xfoil && make pplot && make pxplot && make clean
