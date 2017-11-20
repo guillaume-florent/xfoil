@@ -31,13 +31,18 @@ RUN make -f Makefile_DP osgen && make -f Makefile_DP osmap.o
 WORKDIR /opt/xfoil/orrs
 RUN ./bin/osgen osmaps_ns.lst
 
+RUN install_packages xorg-dev
+
 WORKDIR /opt/xfoil/plotlib
 RUN make
 
 WORKDIR /opt/xfoil/bin
-RUN make xfoil && make pplot && make pxplot && make clean
+RUN make xfoil
+RUN make pplot
+RUN make pxplot
+RUN make clean
 
-WORKDIR /opt/bin
-RUN ln -s /opt/xfoil/runs/xfoil xfoil
+# WORKDIR /opt/bin
+# RUN ln -s /opt/xfoil/runs/xfoil xfoil
 
 CMD ["/bin/bash"]
