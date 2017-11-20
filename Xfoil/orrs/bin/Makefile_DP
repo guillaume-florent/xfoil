@@ -19,7 +19,8 @@ PLTOBJ = /opt/xfoil/plotlib/libPlt_gDP.a
 
 #========================================
 FC = gfortran
-FLG = -O -r8
+# FLG = -O -r8
+FLG = -O -fdefault-real-8
 PLTLIB = -lX11
 FTNLIB =
 
