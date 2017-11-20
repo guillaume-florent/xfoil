@@ -1,22 +1,27 @@
 
 SRC = ../src
-PLTOBJ = /var/local/codes/Xplot/libPltDP.a
+# PLTOBJ = /var/local/codes/Xplot/libPltDP.a
+PLTOBJ = /opt/xfoil/plotlib/libPlt_gDP.a
 
 #========================================
 #  Default compiler flags
-FC = f77
-FLG = -O -r8
-PLTLIB = -lX11
-FTNLIB =
+# FC = f77
+# FLG = -O -r8
+# PLTLIB = -lX11
+# FTNLIB =
 
 #========================================
 #  Uncomment for Intel Fortran Compiler
-FC = ifort
-FLG = -O -r8
-PLTLIB = -L/usr/X11R6/lib -lX11
-FTNLIB =
+# FC = ifort
+# FLG = -O -r8
+# PLTLIB = -L/usr/X11R6/lib -lX11
+# FTNLIB =
 
 #========================================
+FC = gfortran
+FLG = -O -r8
+PLTLIB = -lX11
+FTNLIB =
 
 
 OS: osgen osmap.o

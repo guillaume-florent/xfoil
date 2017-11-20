@@ -33,7 +33,7 @@ OSOBJ = frplot0.o
 OSOBJ = frplot.o ntcalc.o osmap.o getosfile.o
 
 ##----------------------------------------------------
-PLTOBJ = /opt/xfoil/plotlib/libPlt.a
+# PLTOBJ = /opt/xfoil/plotlib/libPlt.a
 
 # Use this if you have a copy of the plotlib as a system library
 #PLTOBJ = -lPlt
