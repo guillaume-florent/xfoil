@@ -32,9 +32,8 @@
 # Point to your install directory
 INSTALLDIR = /usr/local/lib
 
-# Use these to set default library name (overridden in config.make file)
-# PLTLIB = libPlt.a
-PLTLIB = libPlt_gDP.a
+# Use these to set default library name
+PLTLIB = /usr/local/lib/libPlt_gDP.a
 
 
 ###========================================================
@@ -69,7 +68,7 @@ OBJ3D  = plt_3D.o
 # include ./config.make.gfortranDP
 
 # Set library name
-PLTLIB = libPlt_gDP.a
+PLTLIB = /usr/local/lib/libPlt_gDP.a
 
 # Some fortrans need trailing underscores in C interface symbols (see Xwin.c)
 # This should work for most of the "unix" fortran compilers
