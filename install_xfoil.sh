@@ -25,15 +25,10 @@ echo "Building Docker XFoil container ${containerName}"
 
 docker build --tag ${imageName} .
 
-docker run  -it -d --name ${containerName} --user=${user}   \
-    -e USER=${username}                                     \
+docker run  -it -d --name ${containerName}                  \
     -e DISPLAY=${displayVar}                                \
     --workdir="${home}"                                     \
     --volume="${home}:${home}"                              \
-    --volume="/etc/group:/etc/group:ro"                     \
-    --volume="/etc/passwd:/etc/passwd:ro"                   \
-    --volume="/etc/shadow:/etc/shadow:ro"                   \
-    --volume="/etc/sudoers.d:/etc/sudoers.d:ro"             \
      -v=/tmp/.X11-unix:/tmp/.X11-unix ${imageName}          \
      /bin/bash
 
@@ -41,5 +36,5 @@ docker run  -it -d --name ${containerName} --user=${user}   \
 echo "Container ${containerName} was created."
 
 echo "*******************************************************"
-echo "Run the ./start_xfoil.sh script to launch container"
+echo "Run the ./start_xfoil.sh script to launch container    "
 echo "*******************************************************"

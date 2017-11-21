@@ -68,8 +68,8 @@ install:
 
 clean:
 	-/bin/rm $(PROGS)
-	-/bin/rm $(XFOILOBJ) $(XUTILOBJ) $(OSOBJ) $(PPLOTOBJ) $(PXPLOTOBJ)
-#	-/bin/rm *.o
+#	-/bin/rm $(XFOILOBJ) $(XUTILOBJ) $(OSOBJ) $(PPLOTOBJ) $(PXPLOTOBJ)
+	-/bin/rm *.o
 
 
 

@@ -22,7 +22,7 @@ WORKDIR /tmp/xfoil_download
 ADD https://api.github.com/repos/guillaume-florent/xfoil/git/refs/heads/master version.json
 RUN git clone --depth=1 https://github.com/guillaume-florent/xfoil && \
     mv /tmp/xfoil_download/xfoil/Xfoil /tmp/xfoil && \
-    rm -r /tmp/xfoil_download
+    rm -r /tmp/xfoil_download && rmdir /tmp/xfoil_download
 
 # Compile
 RUN cd /tmp/xfoil/orrs/bin && \
