@@ -1,17 +1,3 @@
-#################################################
-#
-# Build :
-# docker build --tag xfoil:6.99 .
-#
-# Run :
-# xhost +
-# home="${1:-$HOME}"
-# docker run -ti -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix --volume="${home}:${home}" xfoil:6.99
-# or
-# docker run -ti xfoil:6.99
-#
-#################################################
-
 FROM bitnami/minideb:stretch
 
 RUN install_packages git gfortran ca-certificates make xorg-dev
@@ -22,7 +8,7 @@ WORKDIR /tmp/xfoil_download
 ADD https://api.github.com/repos/guillaume-florent/xfoil/git/refs/heads/master version.json
 RUN git clone --depth=1 https://github.com/guillaume-florent/xfoil && \
     mv /tmp/xfoil_download/xfoil/Xfoil /tmp/xfoil && \
-    rm -r /tmp/xfoil_download && rmdir /tmp/xfoil_download
+    rm -r /tmp/xfoil_download
 
 # Compile
 RUN cd /tmp/xfoil/orrs/bin && \

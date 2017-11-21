@@ -16,3 +16,5 @@
 xhost +local:xfoil
 docker start xfoil
 docker exec -it xfoil /bin/bash
+# or
+# docker exec -it xfoil xfoil
