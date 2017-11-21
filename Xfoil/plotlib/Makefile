@@ -30,9 +30,7 @@
 #================================#
 
 # Point to your install directory
-#INSTALLDIR = /home/codes/bin
-#INSTALLDIR = /usr/local/lib
-INSTALLDIR = .
+INSTALLDIR = /usr/local/lib
 
 # Use these to set default library name (overridden in config.make file)
 # PLTLIB = libPlt.a
@@ -68,7 +66,24 @@ OBJ3D  = plt_3D.o
 
 ###-------------------------------------------------------------------------
 ### Set compiler, compiler flags, name of output object library
-include ./config.make.gfortranDP
+# include ./config.make.gfortranDP
+
+# Set library name
+PLTLIB = libPlt_gDP.a
+
+# Some fortrans need trailing underscores in C interface symbols (see Xwin.c)
+# This should work for most of the "unix" fortran compilers
+DEFINE = -DUNDERSCORE
+
+FC = gfortran
+CC  = gcc
+DP = -fdefault-real-8
+
+FFLAGS  = -m64 -O2 $(DP)
+CFLAGS  = -m64 -O2 $(DEFINE) -I/usr/X11/include
+AR = ar r
+RANLIB = ranlib
+LINKLIB = -L/usr/X11R6/lib -lX11
 
 
 ###-------------------------------------------------------------------------

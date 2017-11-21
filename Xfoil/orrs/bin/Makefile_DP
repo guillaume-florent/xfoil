@@ -1,23 +1,7 @@
 
 SRC = ../src
-# PLTOBJ = /var/local/codes/Xplot/libPltDP.a
-PLTOBJ = /opt/xfoil/plotlib/libPlt_gDP.a
+PLTOBJ = /usr/local/lib/libPlt_gDP.a
 
-#========================================
-#  Default compiler flags
-# FC = f77
-# FLG = -O -r8
-# PLTLIB = -lX11
-# FTNLIB =
-
-#========================================
-#  Uncomment for Intel Fortran Compiler
-# FC = ifort
-# FLG = -O -r8
-# PLTLIB = -L/usr/X11R6/lib -lX11
-# FTNLIB =
-
-#========================================
 FC = gfortran
 # FLG = -O -r8
 FLG = -O -fdefault-real-8
@@ -108,4 +92,3 @@ userio.o: $(SRC)/userio.f
 	$(FC) -c $(FLG) $(SRC)/userio.f
 getarg0.o: $(SRC)/getarg0.f
 	$(FC) -c $(FLG) $(SRC)/getarg0.f
-

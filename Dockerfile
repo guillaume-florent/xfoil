@@ -14,35 +14,28 @@
 
 FROM bitnami/minideb:stretch
 
-RUN install_packages git gfortran ca-certificates make
+RUN install_packages git gfortran ca-certificates make xorg-dev
 
-# Get the code and move the code to /opt/xfoil and erase the rest
-RUN mkdir /opt/xfoil_download
-WORKDIR /opt/xfoil_download
+# Get the code and move the code to /tmp/xfoil and erase the rest
+RUN mkdir /tmp/xfoil_download
+WORKDIR /tmp/xfoil_download
 ADD https://api.github.com/repos/guillaume-florent/xfoil/git/refs/heads/master version.json
-RUN git clone --depth=1 https://github.com/guillaume-florent/xfoil && mv /opt/xfoil_download/xfoil/Xfoil /opt/xfoil
-WORKDIR /opt
-RUN rm -r /opt/xfoil_download
+RUN git clone --depth=1 https://github.com/guillaume-florent/xfoil && \
+    mv /tmp/xfoil_download/xfoil/Xfoil /tmp/xfoil && \
+    rm -r /tmp/xfoil_download
 
 # Compile
-WORKDIR /opt/xfoil/orrs/bin
-RUN make -f Makefile_DP osgen && make -f Makefile_DP osmap.o
-
-WORKDIR /opt/xfoil/orrs
-RUN ./bin/osgen osmaps_ns.lst
-
-RUN install_packages xorg-dev
-
-WORKDIR /opt/xfoil/plotlib
-RUN make
-
-WORKDIR /opt/xfoil/bin
-RUN make xfoil
-RUN make pplot
-RUN make pxplot
-RUN make clean
-
-# WORKDIR /opt/bin
-# RUN ln -s /opt/xfoil/runs/xfoil xfoil
+RUN cd /tmp/xfoil/orrs/bin && \
+    make -f Makefile_DP osgen && \
+    make -f Makefile_DP osmap.o && \
+    cd /tmp/xfoil/orrs && \
+    ./bin/osgen osmaps_ns.lst && \
+    cd /tmp/xfoil/plotlib && \
+    make && \
+    cd /tmp/xfoil/bin && \
+    make xfoil && \
+    make pplot && \
+    make pxplot && \
+    make clean
 
 CMD ["/bin/bash"]

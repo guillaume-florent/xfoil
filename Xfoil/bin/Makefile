@@ -4,11 +4,8 @@
 # M.Drela
 #*********************************************************
 
-
 SHELL = sh
-#BINDIR = /home/codes/bin/
-# BINDIR = .
-BINDIR = /usr/bin/
+BINDIR = /usr/local/bin/
 
 PROGS = xfoil pplot pxplot
 
@@ -34,7 +31,6 @@ OSOBJ = frplot0.o
 OSOBJ = frplot.o ntcalc.o osmap.o getosfile.o
 
 ##----------------------------------------------------
-# PLTOBJ = /opt/xfoil/plotlib/libPlt.a
 
 # Use this if you have a copy of the plotlib as a system library
 #PLTOBJ = -lPlt
@@ -53,68 +49,6 @@ INSTALLCMD = install -s
 CC = gcc
 CFLAGS = -O -DUNDERSCORE
 
-##--------------------------
-
-# Uncomment flags for desired machine...
-
-##--------------------------
-### DEC Alpha with OSF and DEC f77/f90 compiler
-#FC = f77
-#FFLAGS = -fast -O4 -tune host
-#FFLOPT = -fast -O4 -tune host
-#FFLOPT = -fast -O5 -tune host -unroll 3
-# Debug flags
-#FFLAGS = -O0 -g
-#FFLOPT = -fast -O4 -tune host
-##--------------------------
-### SGI setup
-#FC = f77
-#FFLAGS = -O2 -static
-#FFLOPT = -O2 -static
-##--------------------------
-##  Uncomment for RS/6000
-#FFLAGS = -O -qextname
-#FFLOPT = -O -qextname
-##--------------------------
-##  Uncomment for HP-9000
-#FFLAGS = -O +ppu
-#FFLOPT = -O +ppu
-#FTNLIB = -U77
-##--------------------------
-### Absoft Linux f77
-#FC = f77
-#FFLAGS = -O -f -s -W -B108 -N34
-#FFLOPT = -O -f -s -W -B108 -N34
-##--------------------------
-### f2c/gcc compiler driver
-#FC = fort77
-#FFLAGS = -O2 -fomit-frame-pointer
-#FFLOPT = -O2 -fomit-frame-pointer
-##--------------------------
-### GNU g77
-#FC = g77
-#FFLAGS = -O3 -fomit-frame-pointer
-#FFLOPT = -O3 -fomit-frame-pointer
-# Debug flags (symbols, array bounds)
-#FC = g77
-#FFLAGS = -g -O0 -C
-##--------------------------
-### GNU gfortran
-#FC = gfortran
-#FFLAGS = -O3 -fomit-frame-pointer
-#FFLOPT = -O3 -fomit-frame-pointer
-# Debug flags (symbols, array bounds)
-#FFLAGS = -g -O0 -fbounds-check
-#FFLOPT = -g -O0 -fbounds-check
-#
-### Double precision option
-#FFLAGS = -O3 -fdefault-real-8
-#FFLOPT = -O3 -fdefault-real-8
-#FFLAGS = -O3 -fdefault-real-8 -fbounds-check
-#FFLOPT = -O3 -fdefault-real-8 -fbounds-check
-# Debug flags (symbols, array bounds)
-#FFLAGS = -g -O0 -C
-##--------------------------
 ### Gfortran
 FC = gfortran
 CHK =
@@ -124,8 +58,7 @@ FFLAGS = -O $(CHK) $(DBL)
 FFLOPT = -O $(CHK) $(DBL)
 FTNLIB =
 
-PLTOBJ = /opt/xfoil/plotlib/libPlt_gDP.a
-
+PLTOBJ = /usr/local/lib/libPlt_gDP.a
 
 
 all:	 $(PROGS)
